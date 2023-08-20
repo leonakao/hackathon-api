@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { UserRepository } from '../repostiories/user.repository';
 import { Gender } from '../enums';
 import { randomUUID } from 'crypto';
-import { EncryptService } from 'src/shared/encrypt/services/encrypt.service';
-import { CreateFirstGroupService } from 'src/modules/group/services/createFirstGroup.service';
+import { EncryptService } from '../../../shared/encrypt/services/encrypt.service';
+import { CreateFirstGroupService } from '../../../modules/group/services/createFirstGroup.service';
 
 export interface StoreUserDto {
   name: string;
@@ -31,6 +31,7 @@ export class StoreUserHandler {
       id: randomUUID(),
       password,
     });
+
     delete user.password;
 
     await this.createFirstGroup.execute(user.id);
