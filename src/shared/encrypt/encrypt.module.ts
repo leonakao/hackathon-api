@@ -6,10 +6,10 @@ import { EncryptService } from './services/encrypt.service';
   controllers: [],
   providers: [
     {
-      provide: 'EncryptService',
+      provide: EncryptService,
       useClass: EncryptService,
     },
   ],
   exports: [EncryptService],
 })
-export class AppModule {}
+export class EncryptModule {}
