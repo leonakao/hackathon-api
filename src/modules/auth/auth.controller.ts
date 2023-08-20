@@ -1,6 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { SignInService } from './services/signIn.service';
 import { SignInDTO } from './dtos/signId.dto';
+import { Public } from './decorator/public.decorator';
 
 @Controller({
   path: 'auth',
@@ -8,9 +9,7 @@ import { SignInDTO } from './dtos/signId.dto';
 export class AuthController {
   constructor(private readonly signInService: SignInService) {}
 
-  /**
-   * Create a route that will call and use the SignInService
-   */
+  @Public()
   @Post('sign-in')
   async signIn(@Body() signInDto: SignInDTO) {
     return await this.signInService.execute(

@@ -5,6 +5,8 @@ import { UserModule } from '../users/user.module';
 import { EncryptModule } from 'src/shared/encrypt/encrypt.module';
 import { AuthController } from './auth.controller';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthGuard } from './guards/auth.guard';
 
 @Module({
   imports: [
@@ -18,6 +20,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       }),
       inject: [ConfigService],
     }),
+    ConfigModule,
     UserModule,
     EncryptModule,
   ],
@@ -26,6 +29,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     {
       provide: SignInService,
       useClass: SignInService,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
     },
   ],
 })
