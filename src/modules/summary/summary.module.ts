@@ -10,6 +10,8 @@ import { SummaryStoreHandler } from './handlers/store.handler';
 import { GroupModule } from '../group/group.module';
 import { ListByGroupHandler } from './handlers/listByGroup.handler';
 import { ListSummaryController } from './controllers/list-summary.controller';
+import { QueueRepository } from './repositories/queue.repository';
+import { QueueTypeOrmRepository } from './repositories/implementations/queue.typeorm';
 
 @Module({
   imports: [GroupModule],
@@ -22,6 +24,10 @@ import { ListSummaryController } from './controllers/list-summary.controller';
     {
       provide: ProfileRepository,
       useClass: ProfileTypeOrmRepository,
+    },
+    {
+      provide: QueueRepository,
+      useClass: QueueTypeOrmRepository,
     },
     {
       provide: SummaryRepository,
