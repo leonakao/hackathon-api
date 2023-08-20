@@ -10,5 +10,6 @@ export default () => ({
     entities: [__dirname + '/../../modules/**/entities/*.entity{.ts,.js}'],
     migrations: [__dirname + '/../migrations/*{.ts,.js}'],
     migrationsTableName: 'migrations_typeorm',
+    logging: true,
   },
 });

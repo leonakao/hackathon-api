@@ -5,4 +5,8 @@ export abstract class UserRepository {
     key: Key,
     value: User[Key],
   ): Promise<User | undefined>;
+
+  abstract store(
+    user: Omit<User, 'createdAt' | 'updatedAt' | 'deletedAt'>,
+  ): Promise<User>;
 }

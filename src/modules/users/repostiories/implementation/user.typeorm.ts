@@ -19,4 +19,9 @@ export class UserTypeOrmRepository extends UserRepository {
   ): Promise<User | undefined> {
     return await this.repository.findOne({ where: { [key]: value } });
   }
+
+  async store(user: Omit<User, 'createdAt' | 'updatedAt' | 'deletedAt'>) {
+    console.log(user);
+    return await this.repository.save(user);
+  }
 }
