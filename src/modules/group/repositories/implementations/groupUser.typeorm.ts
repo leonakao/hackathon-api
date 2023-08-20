@@ -19,15 +19,14 @@ export class GroupUserTypeOrmRepository extends GroupUserRepository {
     return await this.repository.save(groupUser);
   }
 
-  async findProtectedByUserId(userId: string): Promise<GroupUser | undefined> {
+  async findProtectedByUserId(userId: string): Promise<GroupUser | null> {
     const query = this.repository.createQueryBuilder();
 
     return await query
-      .innerJoin('group', 'group', 'group.id = groupUser.groupId')
-      .where('userId = :userId', { userId })
-      .andWhere('group.deletedAt IS NULL')
-      .andWhere('group.protected', { protected: true })
-      .select('groupUser.*')
+      .innerJoin('groups', 'group', 'group.id = GroupUser.group_id')
+      .where('user_id = :userId', { userId })
+      .andWhere('group.deleted_at IS NULL')
+      .andWhere('group.protected = true')
       .getOne();
   }
 }

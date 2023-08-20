@@ -33,7 +33,7 @@ export class CreateGroupUsers1692505893868 implements MigrationInterface {
             default: false,
           },
           {
-            name: 'created_by',
+            name: 'added_by',
             type: 'varchar',
             isNullable: false,
           },

@@ -12,7 +12,7 @@ export class FindProtectedGroupService {
     );
 
     if (!groupUser) {
-      return undefined;
+      throw new Error('User group not found');
     }
 
     return groupUser;
