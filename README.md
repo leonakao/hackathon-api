@@ -31,6 +31,19 @@ cp .env.example .env
 # Start the project using Docker
 docker-compose up -d
 ```
+## Test
+
+This application focus the test inside the Domain Layer.
+
+After start the application using Docker, tests can be called with:
+
+```bash
+# Run all tests
+docker-compose exec app npm run test
+
+# Run coverage
+docker-compose exec app npm run test:cov
+```
 
 ## Database Modeling
 
@@ -48,8 +61,11 @@ docker-compose up -d
 Considering our team's distribution, we decided to separate our project into 3 parts:
 
 Hackathon-front
+
 Hackathon-api
+
 Hackathon-ia
+
 This approach allows us to maintain a fast delivery pace with minimal impact on other contexts.
 
 Another advantage is that, in terms of scaling the project, our IA project requires more resources than our API. Therefore, keeping them separated is advantageous.
