@@ -11,7 +11,7 @@ export class GroupUser {
   id: string;
 
   @Column()
-  summaryId: string;
+  groupId: string;
 
   @Column()
   userId: string;
