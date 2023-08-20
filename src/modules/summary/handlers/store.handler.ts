@@ -6,9 +6,9 @@ import { FileInputRepository } from '../repositories/fileInput.repository';
 import { randomUUID } from 'crypto';
 import { FileInputType, QueueStatus } from '../enums';
 import { SummaryStatus } from '../enums/summaryStatus.enum';
-import { AuthenticatedUser } from 'src/modules/auth/services/signIn.service';
-import { FindProtectedGroupService } from 'src/modules/group/services/findProtectedGroup.service';
-import { AddSummaryToGroupService } from 'src/modules/group/services/addSummaryToGroup.service';
+import { AuthenticatedUser } from '../../auth/services/signIn.service';
+import { FindProtectedGroupService } from '../../group/services/findProtectedGroup.service';
+import { AddSummaryToGroupService } from '../../group/services/addSummaryToGroup.service';
 import { QueueRepository } from '../repositories/queue.repository';
 
 export interface SummaryStoreDto {
