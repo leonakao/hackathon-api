@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { UserService } from 'src/modules/user/services/user.service';
-import { EncryptService } from 'src/shared/encrypt/services/encrypt.service';
+import { UserService } from '../../user/services/user.service';
+import { EncryptService } from '../../../shared/encrypt/services/encrypt.service';
 
 export interface AuthenticatedUser {
   id: string;
