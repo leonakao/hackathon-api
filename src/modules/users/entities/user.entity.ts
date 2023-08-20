@@ -26,4 +26,13 @@ export class User {
 
   @Column()
   gender?: Gender;
+
+  @Column()
+  createdAt: Date;
+
+  @Column()
+  updatedAt: Date;
+
+  @Column()
+  deletedAt?: Date;
 }
