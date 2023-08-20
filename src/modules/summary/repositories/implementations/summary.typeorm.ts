@@ -27,6 +27,7 @@ export class SummaryTypeOrmRepository extends SummaryRepository {
         'groupSumary.summary_id = summary.id',
       )
       .where('groupSumary.group_id = :groupId', { groupId })
+      .orderBy('summary.createdAt', 'DESC')
       .getMany();
   }
 }
