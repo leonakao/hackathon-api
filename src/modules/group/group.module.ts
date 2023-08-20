@@ -8,10 +8,12 @@ import { FindProtectedGroupService } from './services/findProtectedGroup.service
 import { GroupSummaryRepository } from './repositories/groupSummary.repository';
 import { AddSummaryToGroupService } from './services/addSummaryToGroup.service';
 import { GroupSummaryTypeOrmRepository } from './repositories/implementations/groupSummary.typeorm';
+import { ListGroupHandler } from './handlers/listGroup.handler';
+import { ListController } from './controllers/list.controller';
 
 @Module({
   imports: [],
-  controllers: [],
+  controllers: [ListController],
   providers: [
     {
       provide: CreateFirstGroupService,
@@ -36,6 +38,10 @@ import { GroupSummaryTypeOrmRepository } from './repositories/implementations/gr
     {
       provide: GroupUserRepository,
       useClass: GroupUserTypeOrmRepository,
+    },
+    {
+      provide: ListGroupHandler,
+      useClass: ListGroupHandler,
     },
   ],
   exports: [

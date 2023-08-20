@@ -8,10 +8,12 @@ import { SummaryRepository } from './repositories/summary.repository';
 import { StoreSummaryController } from './controllers/store-summary.controller';
 import { SummaryStoreHandler } from './handlers/store.handler';
 import { GroupModule } from '../group/group.module';
+import { ListByGroupHandler } from './handlers/listByGroup.handler';
+import { ListSummaryController } from './controllers/list-summary.controller';
 
 @Module({
   imports: [GroupModule],
-  controllers: [StoreSummaryController],
+  controllers: [StoreSummaryController, ListSummaryController],
   providers: [
     {
       provide: FileInputRepository,
@@ -28,6 +30,10 @@ import { GroupModule } from '../group/group.module';
     {
       provide: SummaryStoreHandler,
       useClass: SummaryStoreHandler,
+    },
+    {
+      provide: ListByGroupHandler,
+      useClass: ListByGroupHandler,
     },
   ],
 })
