@@ -3,7 +3,7 @@ import { UserRepository } from '../repostiories/user.repository';
 import { Gender } from '../enums';
 import { randomUUID } from 'crypto';
 import { EncryptService } from '../../../shared/encrypt/services/encrypt.service';
-import { CreateFirstGroupService } from '../../../modules/group/services/createFirstGroup.service';
+import { CreateFirstGroupService } from '../../group/services/createFirstGroup.service';
 
 export interface StoreUserDto {
   name: string;
