@@ -5,17 +5,17 @@ import {
   TableForeignKey,
 } from 'typeorm';
 
-export class CreateFileInput1692499491310 implements MigrationInterface {
+export class CreateGroupSummaries1692505888594 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'file_inputs',
+        name: 'group_summaries',
         columns: [
           {
             name: 'id',
             type: 'varchar',
             isPrimary: true,
-            generationStrategy: 'uuid',
+            isNullable: false,
           },
           {
             name: 'summary_id',
@@ -23,33 +23,12 @@ export class CreateFileInput1692499491310 implements MigrationInterface {
             isNullable: false,
           },
           {
-            name: 'type',
-            type: 'varchar',
-            length: '50',
-            isNullable: false,
-          },
-          {
-            name: 'public_url',
+            name: 'group_id',
             type: 'varchar',
             isNullable: false,
           },
           {
-            name: 'name',
-            type: 'varchar',
-            isNullable: true,
-          },
-          {
-            name: 'format',
-            type: 'varchar',
-            isNullable: true,
-          },
-          {
-            name: 'size',
-            type: 'varchar',
-            isNullable: true,
-          },
-          {
-            name: 'created_by',
+            name: 'added_by',
             type: 'varchar',
             isNullable: false,
           },
@@ -75,16 +54,25 @@ export class CreateFileInput1692499491310 implements MigrationInterface {
     );
 
     await queryRunner.createForeignKey(
-      'file_inputs',
+      'group_summaries',
       new TableForeignKey({
         columnNames: ['summary_id'],
         referencedColumnNames: ['id'],
         referencedTableName: 'summaries',
       }),
     );
+
+    await queryRunner.createForeignKey(
+      'group_summaries',
+      new TableForeignKey({
+        columnNames: ['group_id'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'groups',
+      }),
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('file_inputs');
+    await queryRunner.dropTable('group_summaries');
   }
 }

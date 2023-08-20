@@ -1,52 +1,31 @@
-import {
-  MigrationInterface,
-  QueryRunner,
-  Table,
-  TableForeignKey,
-} from 'typeorm';
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateFileInput1692499491310 implements MigrationInterface {
+export class CreateGroup1692505870183 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'file_inputs',
+        name: 'groups',
         columns: [
           {
             name: 'id',
             type: 'varchar',
             isPrimary: true,
-            generationStrategy: 'uuid',
-          },
-          {
-            name: 'summary_id',
-            type: 'varchar',
-            isNullable: false,
-          },
-          {
-            name: 'type',
-            type: 'varchar',
-            length: '50',
-            isNullable: false,
-          },
-          {
-            name: 'public_url',
-            type: 'varchar',
             isNullable: false,
           },
           {
             name: 'name',
             type: 'varchar',
-            isNullable: true,
+            isNullable: false,
           },
           {
-            name: 'format',
+            name: 'description',
             type: 'varchar',
             isNullable: true,
           },
           {
-            name: 'size',
-            type: 'varchar',
-            isNullable: true,
+            name: 'protected',
+            type: 'boolean',
+            default: false,
           },
           {
             name: 'created_by',
@@ -73,18 +52,9 @@ export class CreateFileInput1692499491310 implements MigrationInterface {
         ],
       }),
     );
-
-    await queryRunner.createForeignKey(
-      'file_inputs',
-      new TableForeignKey({
-        columnNames: ['summary_id'],
-        referencedColumnNames: ['id'],
-        referencedTableName: 'summaries',
-      }),
-    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('file_inputs');
+    await queryRunner.dropTable('groups');
   }
 }

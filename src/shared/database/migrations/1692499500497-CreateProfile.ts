@@ -18,7 +18,7 @@ export class CreateProfile1692499500497 implements MigrationInterface {
             generationStrategy: 'uuid',
           },
           {
-            name: 'summaryId',
+            name: 'summary_id',
             type: 'varchar',
             isNullable: false,
           },
@@ -33,24 +33,24 @@ export class CreateProfile1692499500497 implements MigrationInterface {
             isNullable: false,
           },
           {
-            name: 'hasDisability',
+            name: 'has_disability',
             type: 'boolean',
             default: true,
           },
           {
-            name: 'createdAt',
+            name: 'created_at',
             type: 'timestamp',
             isNullable: false,
             default: 'now()',
           },
           {
-            name: 'updatedAt',
+            name: 'updated_at',
             type: 'timestamp',
             isNullable: false,
             default: 'now()',
           },
           {
-            name: 'deletedAt',
+            name: 'deleted_at',
             type: 'timestamp',
             isNullable: true,
           },
@@ -61,7 +61,7 @@ export class CreateProfile1692499500497 implements MigrationInterface {
     await queryRunner.createForeignKey(
       'profiles',
       new TableForeignKey({
-        columnNames: ['summaryId'],
+        columnNames: ['summary_id'],
         referencedColumnNames: ['id'],
         referencedTableName: 'summaries',
       }),
@@ -69,7 +69,6 @@ export class CreateProfile1692499500497 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('profiles', 'summaryId');
     await queryRunner.dropTable('profiles');
   }
 }

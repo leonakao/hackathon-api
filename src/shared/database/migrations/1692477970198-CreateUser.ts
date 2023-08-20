@@ -53,19 +53,19 @@ export class CreateUser1692477970198 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: 'createdAt',
+            name: 'created_at',
             type: 'timestamp',
             isNullable: false,
             default: 'now()',
           },
           {
-            name: 'updatedAt',
+            name: 'updated_at',
             type: 'timestamp',
             isNullable: false,
             default: 'now()',
           },
           {
-            name: 'deletedAt',
+            name: 'deleted_at',
             type: 'timestamp',
             isNullable: true,
           },

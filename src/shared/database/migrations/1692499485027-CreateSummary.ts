@@ -28,7 +28,7 @@ export class CreateSummary1692499485027 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: 'fileInputType',
+            name: 'file_input_type',
             type: 'varchar',
             length: '50',
             isNullable: false,
@@ -40,21 +40,26 @@ export class CreateSummary1692499485027 implements MigrationInterface {
             isNullable: false,
           },
           {
-            name: 'createdBy',
+            name: 'created_by',
             type: 'varchar',
             isNullable: false,
           },
           {
-            name: 'createdAt',
+            name: 'created_at',
             type: 'timestamp',
             isNullable: false,
             default: 'now()',
           },
           {
-            name: 'updatedAt',
+            name: 'updated_at',
             type: 'timestamp',
             isNullable: false,
             default: 'now()',
+          },
+          {
+            name: 'deleted_at',
+            type: 'timestamp',
+            isNullable: true,
           },
         ],
       }),
