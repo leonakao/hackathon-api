@@ -20,18 +20,13 @@ export class SummaryTypeOrmRepository extends SummaryRepository {
   async listByGroup(groupId: string) {
     const query = this.repository.createQueryBuilder('summary');
 
-    return (await query
+    return await query
       .innerJoin(
         'group_summaries',
         'groupSumary',
         'groupSumary.summary_id = summary.id',
       )
-      .innerJoinAndSelect(
-        'profiles',
-        'profile',
-        'profile.summary_id = summary.id',
-      )
       .where('groupSumary.group_id = :groupId', { groupId })
-      .getMany()) as any;
+      .getMany();
   }
 }
