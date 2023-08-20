@@ -5,9 +5,10 @@ import { UserTypeOrmRepository } from './repostiories/implementation/user.typeor
 import { UserController } from './controllers/user.controller';
 import { StoreUserHandler } from './handlers/store.handler';
 import { EncryptModule } from 'src/shared/encrypt/encrypt.module';
+import { GroupModule } from '../group/group.module';
 
 @Module({
-  imports: [EncryptModule],
+  imports: [EncryptModule, GroupModule],
   controllers: [UserController],
   providers: [
     {

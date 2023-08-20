@@ -3,6 +3,7 @@ import { UserRepository } from '../repostiories/user.repository';
 import { Gender } from '../enums';
 import { randomUUID } from 'crypto';
 import { EncryptService } from 'src/shared/encrypt/services/encrypt.service';
+import { CreateFirstGroupService } from 'src/modules/group/services/createFirstGroup.service';
 
 export interface StoreUserDto {
   name: string;
@@ -19,19 +20,21 @@ export class StoreUserHandler {
   constructor(
     private readonly userRepository: UserRepository,
     private readonly encryptService: EncryptService,
+    private readonly createFirstGroup: CreateFirstGroupService,
   ) {}
 
-  async execute(user: StoreUserDto) {
-    const password = await this.encryptService.hash(user.password);
+  async execute(userDto: StoreUserDto) {
+    const password = await this.encryptService.hash(userDto.password);
 
-    const newUser = await this.userRepository.store({
-      ...user,
+    const user = await this.userRepository.store({
+      ...userDto,
       id: randomUUID(),
       password,
     });
+    delete user.password;
 
-    delete newUser.password;
+    await this.createFirstGroup.execute(user.id);
 
-    return newUser;
+    return user;
   }
 }
