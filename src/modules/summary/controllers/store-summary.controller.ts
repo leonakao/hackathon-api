@@ -5,7 +5,7 @@ import {
 } from '../handlers/store.handler';
 import { Request } from 'express';
 
-@Controller('summary')
+@Controller('summaries')
 export class StoreSummaryController {
   constructor(private readonly summaryStoreHandler: SummaryStoreHandler) {}
 
