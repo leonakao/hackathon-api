@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { SignInService } from './services/signIn.service';
 import { JwtModule } from '@nestjs/jwt';
-import { UserModule } from '../users/user.module';
+import { UserModule } from '../user/user.module';
 import { EncryptModule } from 'src/shared/encrypt/encrypt.module';
 import { AuthController } from './auth.controller';
 import { ConfigModule, ConfigService } from '@nestjs/config';
