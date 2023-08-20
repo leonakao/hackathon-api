@@ -7,6 +7,8 @@ import { randomUUID } from 'crypto';
 import { FileInputType } from '../enums';
 import { SummaryStatus } from '../enums/summaryStatus.enum';
 import { AuthenticatedUser } from 'src/modules/auth/services/signIn.service';
+import { FindProtectedGroupService } from 'src/modules/group/services/findProtectedGroup.service';
+import { AddSummaryToGroupService } from 'src/modules/group/services/addSummaryToGroup.service';
 
 export interface SummaryStoreDto {
   title: string;
@@ -24,6 +26,8 @@ export class SummaryStoreHandler {
     private readonly summaryRepository: SummaryRepository,
     private readonly profileRepository: ProfileRepository,
     private readonly fileInputRepository: FileInputRepository,
+    private readonly findProtectedGroup: FindProtectedGroupService,
+    private readonly addSummaryToGroup: AddSummaryToGroupService,
   ) {}
 
   async execute(
@@ -57,6 +61,20 @@ export class SummaryStoreHandler {
       type: inputType,
     });
 
+    const groupId = await this.resolveGroupId(data, user.id);
+
+    await this.addSummaryToGroup.execute(summary.id, groupId, user.id);
+
     return summary;
+  }
+
+  private async resolveGroupId(data: SummaryStoreDto, userId: string) {
+    if (data.groupId) {
+      return data.groupId;
+    }
+
+    const { groupId } = await this.findProtectedGroup.execute(userId);
+
+    return groupId;
   }
 }
