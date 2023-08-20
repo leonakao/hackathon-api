@@ -15,6 +15,7 @@ export interface SummaryStoreDto {
   title: string;
   grade: string;
   subject: string;
+  mode: string;
   description?: string;
   file?: File;
   link?: string;
@@ -55,7 +56,7 @@ export class SummaryStoreHandler {
       grade: data.grade,
       subject: data.subject,
       summaryId: summary.id,
-      hasDisability: true,
+      mode: data.mode,
     });
 
     await this.fileInputRepository.store({

@@ -19,8 +19,8 @@ export class Profile {
   @Column()
   grade: string;
 
-  @Column({ default: true, name: 'has_disability' })
-  hasDisability: boolean;
+  @Column()
+  mode: string;
 
   @Column({ name: 'created_at' })
   createdAt: Date;

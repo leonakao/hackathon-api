@@ -33,9 +33,9 @@ export class CreateProfile1692499500497 implements MigrationInterface {
             isNullable: false,
           },
           {
-            name: 'has_disability',
-            type: 'boolean',
-            default: true,
+            name: 'mode',
+            type: 'varchar',
+            isNullable: false,
           },
           {
             name: 'created_at',
