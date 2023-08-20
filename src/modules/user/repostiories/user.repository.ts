@@ -1,3 +1,4 @@
+import { StoreEntity } from 'src/shared/types';
 import { User } from '../entities/user.entity';
 
 export abstract class UserRepository {
@@ -6,7 +7,5 @@ export abstract class UserRepository {
     value: User[Key],
   ): Promise<User | undefined>;
 
-  abstract store(
-    user: Omit<User, 'createdAt' | 'updatedAt' | 'deletedAt'>,
-  ): Promise<User>;
+  abstract store(user: StoreEntity<User>): Promise<User>;
 }

@@ -2,13 +2,10 @@ import {
   Column,
   DeleteDateColumn,
   Entity,
-  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { FileInputType } from '../enums';
 import { SummaryStatus } from '../enums/summaryStatus.enum';
-import { Profile } from './profile.entity';
-import { FileInput } from './fileInput.entity';
 
 @Entity('summaries')
 export class Summary {
@@ -41,10 +38,4 @@ export class Summary {
 
   @DeleteDateColumn()
   deletedAt?: Date;
-
-  @OneToOne(() => Profile, (profile) => profile.summaryId)
-  profile: Profile;
-
-  @OneToOne(() => FileInput, (fileInput) => fileInput.summaryId)
-  fileInput: FileInput;
 }

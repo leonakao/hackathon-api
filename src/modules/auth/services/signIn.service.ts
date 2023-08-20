@@ -3,6 +3,12 @@ import { JwtService } from '@nestjs/jwt';
 import { UserService } from 'src/modules/user/services/user.service';
 import { EncryptService } from 'src/shared/encrypt/services/encrypt.service';
 
+export interface AuthenticatedUser {
+  id: string;
+  name: string;
+  email: string;
+}
+
 @Injectable()
 export class SignInService {
   constructor(
@@ -29,7 +35,7 @@ export class SignInService {
       throw new UnauthorizedException('Invalid email or password');
     }
 
-    const payload = {
+    const payload: AuthenticatedUser = {
       id: user.id,
       name: user.name,
       email: user.email,
