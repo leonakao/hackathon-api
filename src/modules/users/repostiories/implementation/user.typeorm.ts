@@ -21,7 +21,6 @@ export class UserTypeOrmRepository extends UserRepository {
   }
 
   async store(user: Omit<User, 'createdAt' | 'updatedAt' | 'deletedAt'>) {
-    console.log(user);
     return await this.repository.save(user);
   }
 }

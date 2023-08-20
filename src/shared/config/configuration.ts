@@ -12,4 +12,7 @@ export default () => ({
     migrationsTableName: 'migrations_typeorm',
     logging: true,
   },
+  jwt: {
+    secret: process.env.JWT_SECRET,
+  },
 });

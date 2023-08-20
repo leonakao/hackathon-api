@@ -22,8 +22,8 @@ export class SignInService {
     });
 
     const isMatchPassword = await this.encryptService.compare(
-      user.password,
       password,
+      user.password,
     );
 
     if (!isMatchPassword) {

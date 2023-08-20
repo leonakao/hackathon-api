@@ -1,4 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  DeleteDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Gender } from '../enums';
 
 @Entity('users')
@@ -12,9 +17,7 @@ export class User {
   @Column()
   email: string;
 
-  @Column({
-    select: false,
-  })
+  @Column()
   password: string;
 
   @Column()
@@ -35,6 +38,6 @@ export class User {
   @Column()
   updatedAt: Date;
 
-  @Column()
+  @DeleteDateColumn()
   deletedAt?: Date;
 }
