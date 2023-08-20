@@ -27,6 +27,9 @@ export class Summary {
   @Column()
   status: SummaryStatus;
 
+  @Column({ name: 'file_path' })
+  filePath?: string;
+
   @Column({ name: 'created_by' })
   createdBy: string;
 

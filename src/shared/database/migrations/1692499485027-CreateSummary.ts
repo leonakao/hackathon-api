@@ -40,6 +40,11 @@ export class CreateSummary1692499485027 implements MigrationInterface {
             isNullable: false,
           },
           {
+            name: 'file_path',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
             name: 'created_by',
             type: 'varchar',
             isNullable: false,
