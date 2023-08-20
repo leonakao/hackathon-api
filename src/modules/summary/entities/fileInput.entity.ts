@@ -11,13 +11,13 @@ export class FileInput {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ name: 'summary_id' })
   summaryId: string;
 
   @Column()
   type: FileInputType;
 
-  @Column()
+  @Column({ name: 'public_url' })
   publicUrl: string;
 
   @Column()
@@ -29,15 +29,15 @@ export class FileInput {
   @Column()
   size?: string;
 
-  @Column()
+  @Column({ name: 'created_by' })
   createdBy: string;
 
-  @Column()
+  @Column({ name: 'created_at' })
   createdAt: Date;
 
-  @Column()
+  @Column({ name: 'updated_at' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt?: Date;
 }

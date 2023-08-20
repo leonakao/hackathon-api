@@ -12,9 +12,9 @@ import { AddSummaryToGroupService } from 'src/modules/group/services/addSummaryT
 
 export interface SummaryStoreDto {
   title: string;
-  description: string;
   grade: string;
   subject: string;
+  description?: string;
   file?: File;
   link?: string;
   groupId?: string;

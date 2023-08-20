@@ -7,9 +7,10 @@ import { SummaryTypeOrmRepository } from './repositories/implementations/summary
 import { SummaryRepository } from './repositories/summary.repository';
 import { StoreSummaryController } from './controllers/store-summary.controller';
 import { SummaryStoreHandler } from './handlers/store.handler';
+import { GroupModule } from '../group/group.module';
 
 @Module({
-  imports: [],
+  imports: [GroupModule],
   controllers: [StoreSummaryController],
   providers: [
     {

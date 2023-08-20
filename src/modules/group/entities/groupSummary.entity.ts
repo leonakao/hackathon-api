@@ -10,21 +10,21 @@ export class GroupSummary {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ name: 'summary_id' })
   summaryId: string;
 
-  @Column()
+  @Column({ name: 'group_id' })
   groupId: string;
 
-  @Column()
+  @Column({ name: 'added_by' })
   addedBy: string;
 
-  @Column()
+  @Column({ name: 'created_at' })
   createdAt: Date;
 
-  @Column()
+  @Column({ name: 'updated_at' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt?: Date;
 }

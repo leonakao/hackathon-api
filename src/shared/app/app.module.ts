@@ -5,6 +5,8 @@ import configuration from '../config/configuration';
 import { AuthModule } from 'src/modules/auth/auth.module';
 import { EncryptModule } from '../encrypt/encrypt.module';
 import { UserModule } from 'src/modules/user/user.module';
+import { SummaryModule } from 'src/modules/summary/summary.module';
+import { GroupModule } from 'src/modules/group/group.module';
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import { UserModule } from 'src/modules/user/user.module';
     EncryptModule,
     UserModule,
     AuthModule,
+    SummaryModule,
+    GroupModule,
   ],
   controllers: [],
   providers: [],

@@ -10,7 +10,7 @@ export class Profile {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ name: 'summary_id' })
   summaryId: string;
 
   @Column()
@@ -19,15 +19,15 @@ export class Profile {
   @Column()
   grade: string;
 
-  @Column({ default: true })
+  @Column({ default: true, name: 'has_disability' })
   hasDisability: boolean;
 
-  @Column()
+  @Column({ name: 'created_at' })
   createdAt: Date;
 
-  @Column()
+  @Column({ name: 'updated_at' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt?: Date;
 }
