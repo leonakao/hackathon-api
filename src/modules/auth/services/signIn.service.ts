@@ -1,8 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from 'src/modules/users/services/user.service';
 import { EncryptService } from 'src/shared/encrypt/services/encrypt.service';
-import { AuthenticationException } from 'src/shared/exceptions/authentication.exception';
 
 @Injectable()
 export class SignInService {
@@ -15,7 +14,7 @@ export class SignInService {
   async execute(email: string, password: string) {
     const user = await this.userService.findBy('email', email).catch((err) => {
       if (err.message === 'User not found') {
-        throw new AuthenticationException('Invalid email or password');
+        throw new UnauthorizedException('Invalid email or password');
       }
 
       throw err;
@@ -27,7 +26,7 @@ export class SignInService {
     );
 
     if (!isMatchPassword) {
-      throw new AuthenticationException('Invalid email or password');
+      throw new UnauthorizedException('Invalid email or password');
     }
 
     const payload = {
